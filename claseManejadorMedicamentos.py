@@ -26,7 +26,11 @@ class manejadorMedicamentos:
         return self.__listaMedicamentos
 
     def buscarCama (self, index):
+        total = 0
         print (f"Medicamento/Monodroga:      Presentación:       cantidad:              Precio:")
         for i in range (len(self.__listaMedicamentos)):
             if (index == self.__listaMedicamentos[i].getIdCama()):
-                print (f'{self.__listaMedicamentos[i].getNombreComercial()} / {self.__listaMedicamentos[i].getMonoDroga()}      {self.__listaMedicamentos[i].getPresentacion()}             {self.__listaMedicamentos[i].getCantidadAplicada()}               {self.__listaMedicamentos[i].getPrecioTotal()}')
+                print (f'{self.__listaMedicamentos[i].getNombreComercial()} / {self.__listaMedicamentos[i].getMonoDroga()}      {self.__listaMedicamentos[i].getPresentacion()}             {self.__listaMedicamentos[i].getCantidadAplicada()}                     ${self.__listaMedicamentos[i].getPrecioTotal()}')
+                total = total + self.__listaMedicamentos[i].getPrecioTotal()
+        print (f"\ntotal adeudado:                                                        ${total}")
+
