@@ -1,5 +1,6 @@
 import csv
-from materias import materiasAprobadas as mA
+from materias import materiasAprobadas
+from manejadorAlumnos import manejadorAlumnos
 
 class manejadorMaterias:
     __listaMaterias = []
@@ -30,9 +31,10 @@ class manejadorMaterias:
                 fecha = fila[2]
                 nota = int (fila[3])
                 aprob = fila [4]
-                xMateria = mA(dni, nombre, fecha, nota, aprob)
+                xMateria = materiasAprobadas(dni, nombre, fecha, nota, aprob)
                 self.__listaMaterias.append(xMateria)
         print ('carga de materias aprobadas lista')
+        archivo.close()
 
     def buscarDni(self, dni):
         indice=0
@@ -66,34 +68,6 @@ class manejadorMaterias:
                 c += 1
         prom = suma / c
         return prom
-
-    def promocionales2 (self, nom, mA):  ## mA == manejador Alumnos
-        print ('_'*66)
-        print ('|{:^10} {:^10} {:^10} {:^10} {:^10}|'. format('DNI', 'Nombre y Apellido', 'Fecha', 'Nota', 'Año que cursa'))
-        print ('|----------------------------------------------------------------|')
-        print (mA.getAlumnos())
-        for materia in self.__listaMaterias:
-            print ('for materias')
-            if materia.getNombre() == nom:
-                print ('if 1')
-                if materia.getAprobacion() == 'P':
-                    print ('if 2')
-                    if materia.getNota() >= 7:
-                        print ('if for materia')
-                        for alumno in mA.getAlumnos():
-                            print (f'alumno: {alumno}, mA: {mA.getAlumnos()}')
-                            if alumno.getDni() == materia.getDni():
-                                nya = alumno.getNombre() + alumno.getApellido()
-                                print ('|{:^10} {:^10} {:^10} {:^10} {:^10}|'. format(alumno.getDni(), nya, materia.getFecha(), materia.getNota(), alumno.getAño()))
-
-    def promocionales3 (self, nom, mA):
-        print ('_'*66)
-        print ('|{:^10} {:^10} {:^10} {:^10} {:^10}|'. format('DNI', 'Nombre y Apellido', 'Fecha', 'Nota', 'Año que cursa'))
-        print ('|----------------------------------------------------------------|')
-        for materia in self.__listaMaterias:
-            print ('for materias')
-            if materia.getNombre() == nom and materia.getAprobacion() == 'P' and materia.getNota():
-                mA.mostrarPromocionales(materia.getDni(), materia.getNota(), materia.getFecha())
 
     def promocionales (self, nom, mA):
         print ('_'*66)

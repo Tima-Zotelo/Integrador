@@ -11,6 +11,11 @@ class Alumnos:
         self.__nom = nombre
         self.__carrera = carrera
         self.__anho = anho
+    
+    def __gt__ (self, x):
+        primero = str (self.getAño()) + self.getNombre() + self.getApellido()
+        segundo = str (x.getAño()) + x.getNombre() + x.getApellido()
+        return primero > segundo
 
     def getDni (self):
         return self.__dni

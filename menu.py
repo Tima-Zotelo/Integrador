@@ -24,7 +24,7 @@ class Menu:
 -> 1: Cargar datos
 -> 2: Mostrar promedio de un alumno
 -> 3: Informar los estudiantes que aprobaron en forma promocional
--> 4: opc 4
+-> 4: Obtener listado de alumnos
 -> 0: Salir del programa
 """)
 
@@ -33,7 +33,7 @@ class Menu:
     def opc1 (self, mA, mM):
         os.system('cls')
         mA.carga()
-        #print(mA)
+        print(mA)
         mM.carga()
         #print (mM)
 
@@ -52,8 +52,11 @@ class Menu:
         nom = str (input ('ingrese nombre de materia: '))
         mM.promocionales(nom, mA)
 
-    def opc4(self):
-        ''
+    def opc4(self, mA, mM):
+        print ('---------->Alumnos<----------')
+        os.system('cls')
+        mA.ordenar()
+        print (mA)
 
     def salir (self):
         print ('saliendo...')

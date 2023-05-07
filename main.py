@@ -11,7 +11,7 @@ if __name__ == '__main__':
     while not bandera:
         menu.mostarMenu()
         opcion = int (input("Su opcion: "))
-        mA = manejadorAlumnos (3)
+        mA = manejadorAlumnos (3,5)
         mM = manejadorMaterias ()
         menu.opcion(opcion, mA, mM)
         if opcion == 0:
